@@ -10,7 +10,7 @@ urlpatterns = [
     path('',views.home),
     path('loginn/',views.loginn),
     path('signup/',views.signup),
-    path('logout/',views.logout),
+    path('logoutt/',views.logoutt),
     path('upload',views.upload),
     path('like-post/<str:id>', views.likes, name='like-post'),
     path('#<str:id>', views.home_post),
@@ -28,4 +28,4 @@ urlpatterns = [
     path('News/', views.News)
 
     
-]    
+]
