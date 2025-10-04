@@ -12,7 +12,7 @@ import datetime
 import requests
 import time
 import random
-# from agora_token_builder import RtcTokenBuilder
+from agora_token_builder import RtcTokenBuilder
 from .models import RoomMember
 import json
 from django.views.decorators.csrf import csrf_exempt
