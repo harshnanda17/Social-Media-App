@@ -302,7 +302,7 @@ def deleteMember(request):
     return JsonResponse('Member deleted', safe=False)
 
 def News(request):
-  url='https://newsapi.org/v2/everything?q=cricket&from=2025-01-26&sortBy=publishedAt&apiKey=2083f73f530e4bd68be6fc672cd27cf6'
+  url='https://newsapi.org/v2/everything?q=cricket&from=2025-09-05&sortBy=publishedAt&apiKey=5c6130f2e14f4fa8a977dfdd1d3fdbdf'
   cricket_news = requests.get(url).json()
 
   a = cricket_news['articles']
