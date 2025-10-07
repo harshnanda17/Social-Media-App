@@ -253,7 +253,7 @@ def room(request):
 
 
 def getToken(request):
-    appId = "1ad1c3d380984c8c9969a78fd4323219"
+    appId = "61ac19f72eae420f9072230c53a37981"
     appCertificate = "83f37653db0e4eeeab78c4aa319141ee"
     channelName = request.GET.get('channel')
     uid = random.randint(1, 230)
