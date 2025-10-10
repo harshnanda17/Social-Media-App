@@ -26,6 +26,7 @@ urlpatterns = [
     path('get_member/', views.getMember),
     path('delete_member/', views.deleteMember),
     path('News/', views.News)
+    #path('store/', views.store)
 
     
 ]

@@ -254,7 +254,7 @@ def room(request):
 
 def getToken(request):
     appId = "61ac19f72eae420f9072230c53a37981"
-    appCertificate = "83f37653db0e4eeeab78c4aa319141ee"
+    appCertificate = "20c400facce843d994816b92b80aa4ef"
     channelName = request.GET.get('channel')
     uid = random.randint(1, 230)
     expirationTimeInSeconds = 3600
@@ -302,10 +302,10 @@ def deleteMember(request):
     return JsonResponse('Member deleted', safe=False)
 
 def News(request):
-  url='https://newsapi.org/v2/everything?q=cricket&from=2025-09-05&sortBy=publishedAt&apiKey=5c6130f2e14f4fa8a977dfdd1d3fdbdf'
-  cricket_news = requests.get(url).json()
+  url='https://newsapi.org/v2/everything?q=headlines&from=Today&sortBy=publishedAt&apiKey=5c6130f2e14f4fa8a977dfdd1d3fdbdf'
+  headlines = requests.get(url).json()
 
-  a = cricket_news['articles']
+  a = headlines['articles']
   desc = []
   title = []
   img = []
@@ -320,3 +320,68 @@ def News(request):
   context = {'mylist':mylist}
 
   return render(request, 'News.html', context)
+
+'''
+@login_required(login_url='/loginn')
+def store(request):
+    if request.method == 'POST':
+        user = request.user.username
+        item = request.POST['item']
+        amount = request.POST['amount']
+        print(item, amount)
+
+        new_post = Post.objects.create(user=user, item=item, amount=amount)
+        new_post.save()
+
+        return redirect('store.html')
+    else:
+        return redirect('/')
+@login_required(login_url='/loginn')
+def marketplace(request):
+    post = Post.objects.filter(~Q(item=None)).order_by('-created_at')
+
+    profile = Profile.objects.get(user=request.user)
+
+    context = {
+        'post': post,
+        'profile': profile,
+    }
+    return render(request, 'marketplace.html',context)
+@login_required(login_url='/loginn')
+def itemdelete(request, id):
+    post = Post.objects.get(id=id)
+    post.delete()
+
+    return redirect('/marketplace')
+@login_required(login_url='/loginn')
+def itempost(request,id):
+    post=Post.objects.get(id=id)
+    profile = Profile.objects.get(user=request.user)
+    context={
+        'post':post,
+        'profile':profile
+    }
+    return render(request, 'marketplace.html',context)
+@login_required(login_url='/loginn')
+def itemlikes(request, id):
+    if request.method == 'GET':
+        username = request.user.username
+        post = get_object_or_404(Post, id=id)
+
+        like_filter = LikePost.objects.filter(post_id=id, username=username).first()
+
+        if like_filter is None:
+            new_like = LikePost.objects.create(post_id=id, username=username)
+            post.no_of_likes = post.no_of_likes + 1
+        else:
+            like_filter.delete()
+            post.no_of_likes = post.no_of_likes - 1
+
+        post.save()
+
+        # Generate the URL for the current post's detail page
+        print(post.id)
+
+        # Redirect back to the post's detail page
+        return redirect('/marketplace#'+id)
+'''
