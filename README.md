@@ -1,3 +1,6 @@
+<img width="1366" height="768" alt="Screenshot 2025-11-22 114231" src="https://github.com/user-attachments/assets/1a86cafb-3337-4610-8bc2-0f7c8815e471" />
+
+
 # Talkify - Social Media Application
 
 A modern Django-based social media web application that enables users to connect, share content, and interact with each other in real-time.
