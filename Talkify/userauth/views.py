@@ -128,7 +128,7 @@ def likes(request, id):
 @login_required(login_url='/loginn')
 def explore(request):
     post=Post.objects.all().order_by('-created_at')
-    profile = Profile.objects.get(user=request.user)
+    profile = Profile.objects.get(user=request.userrr)  # correct the code here remove rr only userS
 
     context={
         'post':post,
@@ -301,8 +301,8 @@ def deleteMember(request):
     member.delete()
     return JsonResponse('Member deleted', safe=False)
 
-def News(request):
-  url='https://newsapi.org/v2/everything?q=headlines&from=Today&sortBy=publishedAt&apiKey=5c6130f2e14f4fa8a977dfdd1d3fdbdf'
+def News(request):# please undo the all changes below
+  #url='https://newsapi.org/v2/everything?q=headlines&from=Today&sortBy=publishedAt&apiKey=5c6130f2e14f4fa8a977dfdd1d3fdbdf'
   headlines = requests.get(url).json()
 
   a = headlines['articles']
